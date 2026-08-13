@@ -1,0 +1,89 @@
+:root{
+    --glass: rgba(255, 255, 255, 0.06);
+    --accent: rgba(255, 255, 255, 0.1);
+}
+
+/* center the card and give a subtle page background */
+html,body{
+    height:100%;
+    margin:0;
+}
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    background: linear-gradient(135deg,#0f172a 0%, #111827 100%);
+    perspective:1000px; /* helps 3d hover */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Card */
+.card {
+    position: relative;
+    width: 400px;
+    max-width: 90vw;
+    height: 600px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border-radius: 20px;
+    backdrop-filter: blur(15px) saturate(120%);
+    -webkit-backdrop-filter: blur(15px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.02);
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+    transition: transform 280ms cubic-bezier(.2,.9,.2,1), box-shadow 280ms ease;
+}
+
+/* pause animation and lift on hover for a nicer interaction */
+.card:hover {
+    animation-play-state: paused;
+    transform: translateY(-18px) scale(1.02) rotateX(6deg);
+    box-shadow: 0 35px 80px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* gentle floating animation */
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* Content inside the card */
+.content {
+    position: relative;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    gap: 12px;
+    color: #e6eef8;
+    text-align: center;
+}
+
+/* make card responsive on small screens */
+@media (max-width: 420px) {
+    .card { width: 90vw; height: auto; }
+    .content { padding: 28px; }
+}
+.btn{
+    width: 50%;
+    padding: 8px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.contact{
+    background-color: #4778b4;
+    align-items: center;
+    text-align: left;
+    border-radius: 5px;
+    height: 10%;
+    width: 20%;
+    font-weight: bold;
+    padding: 40px;
+}
